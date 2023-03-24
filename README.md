@@ -1,38 +1,9 @@
-# create-svelte
+# sveltekit-offline-preload-bug
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+This repo documents a bug that happens in extremely adverse network conditions when the root layout has a server `load()`.
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+1. npm install
+1. npm run dev
+1. Open up http://localhost:5173 in Chrome (this is most straightforward in Chrome)
+1. In the command palette (CMD + SHIFT + P), choose **Go Offline**
+1. Hover over the **Sverdle** link in the nav. In a flash, SvelteKit will do a hard navigation to`http://localhost:5173/sverdle`, which will fail because you're offline
